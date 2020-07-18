@@ -3,7 +3,7 @@
         <div class="entry">
           <div class="head">
             <span class="sort">{{articlesItem.blogCategory}}</span>
-            <a href="javascript:;">{{articlesItem.blogTitle}}</a>
+            <router-link :to="'/detail/'+articlesItem.id"> {{articlesItem.blogTitle}}</router-link>
           </div>
           <div class="main">
             <p class="info">{{articlesItem.blogAuthor}} 发表于 {{articlesItem.createTime}}</p>
@@ -15,9 +15,10 @@
                 <i class="fa fa-thumbs-up"></i>
                 <span>赞({{articlesItem.likeNum}})</span>
               </a>
-              <a href="javascript:;" class="tags">
+              <router-link :to="'/category/'+articlesItem.id"  class="tags"> 分类：<span>{{articlesItem.blogCategory}}</span></router-link>
+<!--               <a href="javascript:;" class="tags">
                 分类：<span>{{articlesItem.blogCategory}}</span>
-              </a>
+              </a> -->
             </p>
           </div>
         </div>
@@ -93,7 +94,7 @@ export default {
   padding: 5px 0;
   margin: 8px 0 10px 0;
   box-sizing: border-box;
-  font-size: 22px;
+  font-size: 20px;
   color: #444;
 }
 .content .head a {

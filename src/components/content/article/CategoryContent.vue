@@ -1,11 +1,6 @@
 <template>
-    <div class="container">
+<div class="container">
       <div class="content">
-        <p class="topTitle"><i class="el-icon-upload2"></i> 置顶</p>
-        <div class="top">
-
-        </div>
-        <p class="newput"><i class="el-icon-s-promotion"></i> 最新发布</p>
         <div class="panel new">
 
           <article-content-item v-for="(item,index) in articles" :key="index" :articlesItem='item' />
@@ -18,9 +13,6 @@
 
 <script>
 import ArticleContentItem from './ArticleContentItem'
-
-
-
 export default {
     name:  '',
     mixins: [],
@@ -69,7 +61,7 @@ export default {
   width: 820px;
   position: absolute;
   top: 21px;
-  left: 0px;
+  right: 0px;
 }
 .content .newput,
 .topTitle {

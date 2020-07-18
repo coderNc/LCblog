@@ -1,12 +1,18 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view :key="key"/>
+    <el-backtop ></el-backtop>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  computed:{
+    key(){
+      return this.$route.name?this.$route.name + + new Date():this.$route+ +new Date()
+    }
+  }
 }
 </script>
 

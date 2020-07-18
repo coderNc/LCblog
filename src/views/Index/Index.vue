@@ -3,17 +3,17 @@
     <!-- <Header></Header> -->
     <header-test></header-test>
     <article-content :articles="articleData"  />
-
-    <el-backtop target=".page-component__scroll .el-scrollbar__wrap"></el-backtop>
+    <index-aside/>
+    
   </div>
   
 </template>
 
 <script>
-import HeaderTest from '../../components/content/HeaderTest'
-import Header from '../../components/content/Header'
-import ArticleContent from '../../components/content/article/ArticleContent'
-
+import HeaderTest from '@/components/content/HeaderTest'
+import Header from '@/components/content/Header'
+import ArticleContent from '@/components/content/article/ArticleContent'
+import IndexAside from './IndexAside'
 export default {
     name:  '',
     mixins: [],
@@ -21,7 +21,8 @@ export default {
     components: {
       Header,
       HeaderTest,
-      ArticleContent
+      ArticleContent,
+      IndexAside
     },
     data () {
         return {
@@ -63,6 +64,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+body{
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
 </style>

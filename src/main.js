@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
+//引入初始化样式表
+import 'normalize.css'
 
 //引入axios模块
 import axios from 'axios'
@@ -34,6 +37,7 @@ Vue.use(VueAxios , axios)
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })
 
