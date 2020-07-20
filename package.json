@@ -12,11 +12,17 @@
   "dependencies": {
     "axios": "^0.19.2",
     "element-ui": "^2.13.2",
+    "highlight.js": "^10.1.1",
+    "highlightjs": "^9.16.2",
+    "jquery": "^3.5.1",
+    "ribbon.js": "^1.0.2",
+    "sass-loader": "^9.0.2",
     "vue": "^2.5.2",
     "vue-amap": "^0.5.10",
     "vue-axios": "^2.1.5",
     "vue-router": "^3.0.1",
-    "vuex": "^3.5.1"
+    "vuex": "^3.5.1",
+    "wangeditor": "^3.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

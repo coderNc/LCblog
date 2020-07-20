@@ -11,9 +11,9 @@
           active-text-color="#409EFF">
             <el-menu-item index="1" @click="goHome"><i class="el-icon-s-home"></i>首页</el-menu-item>
             <el-menu-item index="2" @click="goCategory"> <i class="el-icon-menu"></i>分类</el-menu-item>
-            <el-menu-item index="3"  ><i class="el-icon-info"></i>关于</el-menu-item>
-            <el-menu-item index="4"><i class="el-icon-s-custom"></i>登录</el-menu-item>
-            <el-menu-item index="5" class="aboutMe"><i class="el-icon-s-custom"></i>个人</el-menu-item>
+            <el-menu-item index="3" @click="goAbout" ><i class="el-icon-info" ></i>关于 </el-menu-item>
+            <el-menu-item index="4" @click="goLogin" v-if="isShowLogin"><i class="el-icon-s-custom"></i>登录</el-menu-item>
+            <el-menu-item index="5" v-else><i class="el-icon-s-custom"></i>个人</el-menu-item>
           </el-menu>
         </el-header>
     
@@ -30,7 +30,9 @@ export default {
     data () {
         return {
         activeIndex: '1',
-        activeIndex2: '1'
+        activeIndex2: '1',
+        isShowLogin: true,
+        userData:{}
         }
     },
     watch: {
@@ -40,7 +42,22 @@ export default {
 
     },
     created () {
-
+      this.axios.defaults.baseURL = 'http://www.lcblog.xyz:81'
+      this.axios.defaults.withCredentials = true
+      //请求登录数据
+      this.axios({
+        method:'get',
+        url:'/picture'
+      }).then(res => {
+        //console.log(res);
+        if(res.status == 200 && res.data.status == 'success'){
+          //登录成功
+          this.userData = res.data.data
+          this.isShowLogin = false 
+        }else{
+          this.isShowLogin = true
+        }
+      })
     },
     mounted () {
 
@@ -51,6 +68,12 @@ export default {
       },
       goCategory(){
         this.$router.push('/category/0')
+      },
+      goAbout(){
+        this.$router.push('/about')
+      },
+      goLogin(){
+        this.$router.push('/login')
       }
     }
 }
@@ -62,6 +85,9 @@ export default {
   background-color: #fff;
   border-bottom: 1px solid #e6e6e6;
   /* opacity: .5; */
+}
+.header a{
+  text-decoration: none;
 }
 .header .nav-bar{
   width: 1240px;

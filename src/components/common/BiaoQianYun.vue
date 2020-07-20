@@ -43,7 +43,7 @@ export default {
         method:'get',
         url:'/category'
       }).then(res => {
-        console.log(res);
+        //console.log(res);
         if(res.status == 200 && res.data.status == 'success'){
           this.tagsR = res.data.data
           let tags=[]

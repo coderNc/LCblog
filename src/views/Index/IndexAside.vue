@@ -44,16 +44,19 @@ export default {
 <style scoped>
 
 .aside-wrapper {
-  width: 1240px;
-  margin: 0 auto;
-  position: relative;
+  width: 400px;
+  
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 .aside{
-  position: absolute;
-  width: 400px;
-  right: 0;
-  top: 40px;
+/*   position: absolute;
   
+  right: 0;
+  top: 40px; */
+  
+  width: 400px;
 }
 .zzsc-container {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);

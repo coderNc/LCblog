@@ -52,16 +52,13 @@ export default {
 
 <style scoped>
 .container {
-  width: 1240px;
-  margin: 0 auto;
-  position: relative;
-  background-color: #bfa;
+  width: 820px;
+  margin-left: 780px;
+  /* margin: 0 auto; */
 }
 .content {
   width: 820px;
-  position: absolute;
-  top: 21px;
-  right: 0px;
+
 }
 .content .newput,
 .topTitle {

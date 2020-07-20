@@ -11,13 +11,16 @@ const Index = () => import('@/views/Index/Index.vue')
 const MapList = () => import('@/views/MapList.vue')
 const Category = () => import('@/views/category/Category.vue')
 const Detail = () => import('@/views/detail/Detail.vue')
-
-
+const About = () => import('@/views/about/About.vue')
+const AdminUser = () => import('@/views/admin/AdminUser.vue')
+const AdminCategory = () => import('@/views/admin/AdminCategory.vue')
+const AdminArticle = () => import('@/views/admin/AdminArticle.vue')
+const AdminAddArticle = () => import('@/views/admin/AdminAddArticle.vue')
 export default new Router({
   routes: [
     {
       path: '',
-      redirect: '/index'
+      redirect: '/admin'
     },
     {
       path:'/index',
@@ -33,6 +36,11 @@ export default new Router({
       path:'/detail/:id',
       name:'detail',
       component:Detail
+    },
+    {
+      path:'/about',
+      name:'about',
+      component:About
     },
     {
       path: '/login',
@@ -52,6 +60,25 @@ export default new Router({
           path:'maplist',
           name:'maplist',
           component:MapList
+        },
+        {
+          path:'user',
+          name:'user',
+          component:AdminUser
+        },
+        {
+          path:'category',
+          name:'category',
+          component:AdminCategory
+        },
+        {
+          path:'article',
+          name:'article',
+          component:AdminArticle
+        },{
+          path:'addarticle',
+          name:'addarticle',
+          component:AdminAddArticle
         }
       ]
     }

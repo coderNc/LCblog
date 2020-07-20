@@ -80,12 +80,15 @@ export default {
 
 <style scoped>
 .menu-wrapper{
-  width: 1240px;
-  margin:  40px auto;
+  width: 400px;
+  margin-left: 340px;
+  position: fixed;
+  top: 100px;
 }
 .tac{
   width: 400px;
-  position: fixed;
+  
+  
 }
 
 </style>

@@ -20,7 +20,7 @@
             <span> 点赞：{{detailData.likeNum}}</span>
           </div>
         </div>
-        <div class="detail-content" v-html="detailData.blogContent">
+        <div class="detail-content" v-html="detailData.blogContent" v-highlight >
           
         </div>
         <el-divider></el-divider>
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+
 export default {
     name:  '',
     mixins: [],
@@ -48,11 +49,11 @@ export default {
     components: {},
     data () {
         return {
-
         }
     },
     watch: {
 
+      
     },
     computed: {
 
@@ -60,9 +61,12 @@ export default {
     created () {
       this.axios.defaults.baseURL = 'http://www.lcblog.xyz:81'
       this.axios.defaults.withCredentials = true
+      
     },
     mounted () {
-
+      $("code").each(function(){
+$(this).html("<ul><li>" + $(this).html().replace(/\n/g,"\n</li><li>") +"\n</li></ul>");
+});
     },
     methods: {
       //点赞
@@ -84,6 +88,9 @@ export default {
             this.$message.error(res.data.data.errMsg);
           }
         })
+      },
+      light(){
+        console.log('helli');
       }
     }
 }
@@ -122,9 +129,6 @@ export default {
 }
 .detail-content {
   padding: 60px;
-}
-.detail-content pre {
-  /* background-color: rgb(211, 208, 208); */
 }
 .detail-content img {
   width: 100%;

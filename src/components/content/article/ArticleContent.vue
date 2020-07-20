@@ -1,5 +1,4 @@
 <template>
-    <div class="container">
       <div class="content">
         <p class="topTitle"><i class="el-icon-upload2"></i> 置顶</p>
         <div class="top">
@@ -12,8 +11,6 @@
 
         </div>
       </div>
-        
-    </div>
 </template>
 
 <script>
@@ -63,13 +60,13 @@ export default {
   width: 1240px;
   margin: 0 auto;
   position: relative;
-  background-color: #bfa;
+  /* background-color: #bfa; */
 }
 .content {
-  width: 820px;
-  position: absolute;
+  width: 800px;
+/*   position: absolute;
   top: 21px;
-  left: 0px;
+  left: 0px; */
 }
 .content .newput,
 .topTitle {

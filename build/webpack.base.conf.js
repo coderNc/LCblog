@@ -3,7 +3,7 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
-
+const webpack = require('webpack')
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -33,6 +33,14 @@ module.exports = {
       'views' : '/src/views'
     }
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      jquery: "jquery",
+      "window.jQuery": "jquery"
+    })
+  ],
   module: {
     rules: [
       {
@@ -68,6 +76,16 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.scss$/,
+        use: [{
+            loader: "style-loader" // 将 JS 字符串生成为 style 节点
+        }, {
+            loader: "css-loader" // 将 CSS 转化成 CommonJS 模块
+        }, {
+            loader: "sass-loader" // 将 Sass 编译成 CSS
+        }]
       }
     ]
   },

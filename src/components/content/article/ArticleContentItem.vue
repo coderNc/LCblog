@@ -102,7 +102,7 @@ export default {
   transition: all 0.5s;
 }
 .content .head a:hover {
-  color: #ff5e52;
+  color: #409EFF;
 }
 .content .head .sort {
   position: relative;
@@ -113,7 +113,7 @@ export default {
   margin-right: 10px;
   float: left;
   color: #fff;
-  background-color: #ff5e52;
+  background-color: #409EFF;
   font-size: 12px;
 }
 .content .head .sort:after {
@@ -124,7 +124,7 @@ export default {
   content: '';
   border-width: 4px;
   border-style: solid;
-  border-color: transparent transparent transparent #ff5e52;
+  border-color: transparent transparent transparent #409EFF;
 }
 .content .main {
   overflow: hidden;
@@ -171,13 +171,13 @@ export default {
   color: #999;
 }
 .content .extra .like:hover {
-  color: #ff5e52;
+  color: #409EFF;
 }
 .content .extra a span {
   text-decoration: underline;
 }
 .content .tags span:hover {
-  color: #ff5e52;
+  color: #409EFF;
 }
 .content .entry p {
   width: 100%;

@@ -2,8 +2,11 @@
   <div>
     <!-- <Header></Header> -->
     <header-test></header-test>
-    <article-content :articles="articleData"  />
-    <index-aside/>
+    <div  class="container">
+          <article-content :articles="articleData"  />
+          <index-aside/>
+    </div>
+
     
   </div>
   
@@ -47,7 +50,7 @@ export default {
           limit:100
         }
       }).then(res => {
-        console.log(res);
+        //console.log(res);
         if(res.status == 200 && res.data.status == 'success'){
           this.articleData = res.data.data
 
@@ -67,5 +70,11 @@ export default {
 <style>
 body{
   font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+.container {
+  width: 1240px;
+  margin: 0 auto;
+  position: relative;
+  /* background-color: #bfa; */
 }
 </style>

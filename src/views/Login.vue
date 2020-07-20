@@ -1,10 +1,10 @@
 <template>
     <div class="login">
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+      <el-form ref="form" :model="form" :rules="rules" label-width="80px" class="formWrapper">
         <h3 class="login-title">登陆</h3>
 
-        <el-form-item label="用户名" prop="name">
-          <el-input v-model="form.name" placeholder="请输入用户名"></el-input>
+        <el-form-item label="用户名" prop="username">
+          <el-input v-model="form.username" placeholder="请输入用户名"></el-input>
         </el-form-item>
 
         <el-form-item label="密码" prop="password">
@@ -14,8 +14,35 @@
           <el-button type="primary" @click="Login('form')">登录</el-button>
           <el-button @click="test">取消</el-button>
         </el-form-item>
-
+        <el-form-item>
+          <el-link @click="openEnrol">还没有账号？立即注册<i class="el-icon-view el-icon--right"></i> </el-link>
+        </el-form-item>
       </el-form>
+
+
+      <el-dialog
+        title="注册"
+        :visible.sync="dialogVisible"
+        width="30%"
+        center>
+        <el-form ref="form" :model="enrolForm" :rules="rules" label-width="80px">
+
+        <el-form-item label="用户名" prop="username">
+          <el-input v-model="enrolForm.username" placeholder="请输入用户名"></el-input>
+        </el-form-item>
+
+        <el-form-item label="密码" prop="password">
+          <el-input type="password" v-model="enrolForm.password"  placeholder="请输入密码"></el-input>
+        </el-form-item>
+        <el-form-item label="手机号" prop="telephone">
+          <el-input v-model="enrolForm.telephone" placeholder="请输入手机号"></el-input>
+        </el-form-item> 
+      </el-form>
+        <span slot="footer" class="dialog-footer">
+            <el-button @click="dialogVisible = false">取 消</el-button>
+            <el-button type="primary" @click="enrol">注 册</el-button>
+        </span>
+        </el-dialog>
     </div>
 </template>
 
@@ -27,26 +54,30 @@ export default {
     components: {},
     data () {
         return {
+          dialogVisible: false,
           form: {
-            name: '',
+            username: '',
             password:'',
-            region: '',
-            date1: '',
-            date2: '',
-            delivery: false,
-            type: [],
-            resource: '',
-            desc: ''
+          },
+          enrolForm:{
+            username:'',
+            password:'',
+            telephone:'',
+            level:'0'
           },
           rules: {
-            name: [
+            username: [
               { required: true, message: '请输入用户名', trigger: 'blur' },
               { min: 1, max: 15, message: '长度在 1 到 15 个字符', trigger: 'blur' }
             ],
             password: [
               { required: true, message: '请输入密码', trigger: 'blur' },
               { min: 6, max: 15, message: '长度在 1 到 15 个字符', trigger: 'blur' }
-            ]
+            ],
+            telephone: [
+              { required: true, message: '请输入手机号', trigger: 'blur' },
+              { min: 11, max: 11, message: '请输入正确的手机号！', trigger: 'blur' }
+            ],
           }
         }
     },
@@ -75,18 +106,13 @@ export default {
         this.$refs[formName].validate((valid) => {
           if (valid) {
             //如果校验成功进入此
-            //获取用户名和密码
-            let username = this.form.name
-            let password = this.form.password
-            console.log(username);
-            console.log(password);
             //请求登录
             this.axios({
               method:'get',
               url:'/user',
               params:{
-                username:username,
-                password:password
+                username:this.form.username,
+                password:this.form.password
               }
             }).then(res => {
               console.log(res);
@@ -115,6 +141,34 @@ export default {
       },
       test(){
         //console.log(this.name);
+      },
+      openEnrol(){
+        this.dialogVisible = true
+      },
+      enrol(){
+        //console.log(this.enrolForm);
+        //console.log(JSON.stringify(this.enrolForm));
+        this.axios({
+          method:'POST',
+          url:'/user',
+          data:JSON.stringify(this.enrolForm),
+          headers:
+            {
+            'Content-Type': 'application/json'
+            }
+        }).then(res => {
+                //console.log(res);
+                if(res.status == 200 && res.data.status == 'success'){
+                    this.$message({
+                            type: 'success',
+                            message: '注册成功!请重新登录！'
+                    });
+                    //location.reload()
+                    this.dialogVisible = false
+                }else{
+                    this.$message.error(res.data.data.errMsg+ '!请重新输入!');
+                }
+            })
       }
     }
 }
@@ -123,7 +177,7 @@ export default {
 <style scoped>
   .login{
     width: 400px;
-    margin: 300px auto 0;
+    margin: 240px auto;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
     padding: 20px 20px 10px 5px;
     border-radius: 20px
@@ -131,5 +185,10 @@ export default {
   .login-title{
     text-align: center;
     color: #409EFF;
+  }
+  .hhh{
+    display: inline-block;
+    height: 40px;
+    padding-top: 2px;
   }
 </style>
