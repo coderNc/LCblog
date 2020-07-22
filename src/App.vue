@@ -2,7 +2,7 @@
   <div id="app">
     <router-view :key="key"/>
     <el-backtop ></el-backtop>
-    
+
     <Footer></Footer>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
 
   },
   mounted(){
-
+    
   }
 }
 </script>

@@ -1,12 +1,25 @@
 <template>
     <div class="aside-wrapper">
-      <div class="aside">
-          <div class="zzsc-container">
-            <div class="bqy"><h3><i class="el-icon-collection-tag"></i>标签云</h3></div>
-            <biao-qian-yun/>
-          </div>
+      <el-card class="box-card">
+        <div slot="header" class="clearfix header">
+          <span> <i class="el-icon-collection-tag"></i> 标签云</span>
+          <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
         </div>
+        <div class="text item">
+          <biao-qian-yun/>
+        </div>
+      </el-card>
+      <el-card class="box-card">
+        <div slot="header" class="clearfix header">
+          <span> <i class="iconfont icon-hot"></i> 最热文章</span>
+          <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
+        </div>
+        <div class="text item">
+          <el-link :underline="false" v-for="(item,index) in hotArticleData" :key="index" class="ellink" @click="goDetail(item.id)"><i class="">{{index + 1}}</i> {{item.blogTitle}}</el-link>
+        </div>
+      </el-card>
     </div>
+
 </template>
 
 <script>
@@ -14,7 +27,12 @@ import BiaoQianYun from '@/components/common/BiaoQianYun'
 export default {
     name:  '',
     mixins: [],
-    props: {},
+    props: {
+      hotArticleData:{
+        type:Array,
+        default:[]
+      }
+    },
     components: {
       BiaoQianYun
     },
@@ -36,7 +54,10 @@ export default {
 
     },
     methods: {
-
+      goDetail(id){
+        //console.log(id);
+        this.$router.push('/detail/' + id)
+      }
     }
 }
 </script>
@@ -50,31 +71,45 @@ export default {
   top: 0;
   right: 0;
 }
-.aside{
-/*   position: absolute;
-  
-  right: 0;
-  top: 40px; */
-  
-  width: 400px;
-}
-.zzsc-container {
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
-  
-  height: 322px;
-  opacity: 0.8;
-}
-.zzsc-container .bqy {
-  border-bottom: 1px solid rgba(88, 88, 84, 0.411);
-}
-.zzsc-container h3 {
-  padding: 10px 0;
-  text-align: center;
-  margin:  0;
-}
-.zzsc-container h3 i {
-  color: #409eff;
-  font-size: 18px;
-  margin-right: 10px;
-}
+
+.text {
+    font-size: 14px;
+  }
+
+  .item {
+    margin-bottom: 18px;
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+    display: table;
+    content: "";
+  }
+  .clearfix:after {
+    clear: both
+  }
+
+  .box-card {
+    width: 400px;
+    margin-bottom: 30px;
+  }
+  .header span{
+    font-size: 18px;
+    color: #303133;
+  }
+  .header i{
+    color: #409eff;
+  }
+  .ellink{
+    display: block;
+    margin: 15px;
+    font-size: 16px;
+    font-family: "Hiragino Sans GB";
+  }
+  .ellink i{
+    margin-right: 5px;
+    color: #409eff;
+    font-weight: 600;
+  }
+
 </style>

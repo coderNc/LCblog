@@ -78,7 +78,7 @@
           <router-view></router-view>
         </el-main>
         </div>
-        
+
       </el-container>
     </el-container>
 
@@ -210,14 +210,15 @@ export default {
                             type: 'success',
                             message: '退出成功!'
                     });
+                    this.$store.commit('upDataUser',{})
                     this.$router.push('/index')
                 }
             })
         }).catch(() => {
             this.$message({
             type: 'info',
-            message: '已取消删除'
-            });          
+            message: '已取消退出登录'
+            });
         });
     },
     //修改密码
@@ -228,8 +229,8 @@ export default {
         this.$refs[formName].resetFields();
     },
     submitForm(){
-      console.log(typeof this.ruleForm.oldPass);
-      console.log(this.ruleForm.pass);
+      //console.log(typeof this.ruleForm.oldPass);
+      //console.log(this.ruleForm.pass);
       this.axios({
         method:'post',
         url:'/user/password',
@@ -238,7 +239,7 @@ export default {
           newPassword:this.ruleForm.pass
         },
         headers:
-        {
+        { 
           'Content-Type': 'application/json'
         }
       }).then(res => {

@@ -113,7 +113,7 @@ export default {
     },
     methods: {
       onSubmit(){
-        this.form.blogContent = this.$refs.edit.editorContent
+        //this.form.blogContent = this.$refs.edit.editorContent
         //console.log(this.form);
         //请求添加博客
         this.axios({

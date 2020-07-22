@@ -33,6 +33,8 @@ export default {
 
     },
     created () {
+      
+
       this.id = this.$route.params.id
       console.log(this.id);
       this.axios.defaults.baseURL = 'http://www.lcblog.xyz:81'
@@ -49,7 +51,7 @@ export default {
       })
     },
     mounted () {
-
+      this.$refs.header.activeIndex = null
     },
     methods: {
 

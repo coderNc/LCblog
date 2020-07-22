@@ -16,10 +16,10 @@ export default {
     components: {},
     data () {
         return {
-          width:400,
+          width:350,
           height:300,
           tagsNum:20,
-          RADIUS:120,
+          RADIUS:150,
           speedX:Math.PI/360,
           speedY:Math.PI/360,
           tags: [],
@@ -65,29 +65,6 @@ export default {
           this.tags = tags;
         }
       })
-      
-      //console.log(this.tagsR);
-
-
-
-
-
-
-
-                //let tags=[];
-/*                 for(let i = 0; i < this.tagsNum; i++){
-                    let tag = {};
-                    let k = -1 + (2 * (i + 1) - 1) / this.tagsNum;
-                    let a = Math.acos(k);
-                    let b = a * Math.sqrt(this.tagsNum * Math.PI);
-                    tag.text = '数据库';
-                    tag.x = this.CX +  this.RADIUS * Math.sin(a) * Math.cos(b);
-                    tag.y = this.CY +  this.RADIUS * Math.sin(a) * Math.sin(b); 
-                    tag.z = this.RADIUS * Math.cos(a);
-                    tag.href = 'https://imgss.github.io';
-                    tags.push(tag);
-                }  */
-                //this.tags = tags;
     },
     mounted () {
                 setInterval(() => {
@@ -128,5 +105,8 @@ export default {
 </script>
 
 <style scoped>
-
+    svg{
+        /* margin-right: 50px; */
+        /* padding-right: 50px; */
+    }
 </style>

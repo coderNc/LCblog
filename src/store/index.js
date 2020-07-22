@@ -12,12 +12,16 @@ Vue.use(Vuex)
 } */
 const store = new Vuex.Store({
   state:{
-    currentIndex:'0'
+    currentIndex:'0',
+    user:{}
   },
   mutations:{
     asddd(state,payload){
       let testIndex = payload + 2
       state.currentIndex = testIndex.toString()
+    },
+    upDataUser(state,payload){
+      state.user = payload
     }
   }
 

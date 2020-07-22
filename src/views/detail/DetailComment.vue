@@ -1,8 +1,9 @@
 <template>
     <div class="comment-wrapper">
+      
       <div class="comment">
         <div class="comment-info">
-          <p><i class="el-icon-warning-outline"></i> 评论说明：请先登录后在评论！</p>
+          <p><i class="el-icon-warning-outline"></i> 评论说明：请先<el-link type="primary" style="font-size: 16px;" @click="goLogin">登录</el-link>后在评论！</p>
         </div>
         <div class="comment-content">
           <el-form  :rules="rules" ref="ruleForm" label-width="70px" class="demo-ruleForm ">
@@ -14,20 +15,24 @@
             <el-button type="primary" @click="submitComment">提交</el-button>
           </div>
         </div>
-        <div class="comments">
+
+        <el-divider></el-divider>
+        <div class="comments" v-if="isSowComment">
           <div class="comments-count">
             <h3>共{{getLength}}条评论</h3>
           </div>
+          <el-divider></el-divider>
           <div class="comments-content-wrapper">
             <div class="commentss-item" v-for="(item,index) in detailComments" :key="index">
               <div class="comments-img">
                 <img :src="item[0].picture">
               </div>
               <span class="comment-user">{{item[0].commonSourceName}}</span>
-              <span class="comment-time">{{item[0].createTime}}</span>
+              <span class="comment-time">{{item[0].createTime}}  <el-button type="primary" icon="el-icon-delete" size="mini" round v-if="isShowBtnDelete" @click="deliteComment(item[0].id)"></el-button></span>
               <div class="comments-content">
                 {{item[0].commonContent}}
               </div>
+              <el-divider></el-divider>
             </div>
           </div>
         </div>
@@ -58,15 +63,25 @@ export default {
     data () {
         return {
           commentContent:'',
+          isShowBtnDelete:false,
+          userData:{},
           rules: {
             desc: [
               { required: true, message: '请填写评论内容', trigger: 'blur' }
           ]
-        }
+        },
+        isSowComment:false
         }
     },
     watch: {
-
+      detailComments(){
+        if(this.detailComments.length != 0){
+        this.isSowComment = true
+      }
+/*             if(this.$store.state.user.level == '1'){
+        this.isShowBtnDelete = true
+      } */
+      }
     },
     computed: {
       getLength(){
@@ -76,9 +91,25 @@ export default {
     created () {
       this.axios.defaults.baseURL = 'http://www.lcblog.xyz:81'
       this.axios.defaults.withCredentials = true
+      //请求登录页用户数据
+      this.axios({
+        method:'get',
+        url:'/picture'
+      }).then(res => {
+        //console.log(res);
+        if(res.status == 200 && res.data.status == 'success'){
+            this.userData = res.data.data
+            if(this.userData.level == '1'){
+              this.isShowBtnDelete = true
+      }
+        }
+      })
+
     },
     mounted () {
-
+/*             if(this.$store.state.user.level == '1'){
+        this.isShowBtnDelete = true
+      } */
     },
     methods: {
       submitComment(){
@@ -105,6 +136,38 @@ export default {
               this.$message.error(res.data.data.errMsg);
             }
           })
+      },
+      goLogin(){
+        this.$router.push('/login')
+      },
+      deliteComment(id){
+        //console.log(id);
+
+        this.$confirm('此操作将删除该评论, 是否继续?', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+        }).then(() => {
+            //调用删除评论接口
+            this.axios({
+                method:'DELETE',
+                url:'/common/' + id
+            }).then(res => {
+                //console.log(res);
+                if(res.status == 200 && res.data.status == 'success'){
+                    this.$message({
+                            type: 'success',
+                            message: '删除成功!'
+                    });
+                    location.reload()
+                }
+            })
+        }).catch(() => {
+            this.$message({
+            type: 'info',
+            message: '已取消删除'
+            });          
+        });
       }
     }
 }
@@ -114,6 +177,7 @@ export default {
 .comment-wrapper{
   width: 1240px;
   margin: 0 auto;
+  
 }
 .comment {
   margin-top: 40px;
@@ -123,7 +187,7 @@ export default {
 .comment-info {
   padding: 10px;
   font-size: 16px;
-  border-bottom: 1px solid rgba(102, 102, 102, 0.562);
+ 
 }
 .comment-info i{
   color: #f00;
@@ -147,7 +211,13 @@ export default {
 }
 .comments-count {
   padding-left: 10px;
-  font-size: 16px;
+
+}
+.comments-count h3{
+    font-size: 18px;
+  font-weight: 500;
+  font-family: "PingFang SC";
+  color: #303133;
 }
 .comments-content-wrapper {
   margin-top: 10px;
@@ -156,7 +226,7 @@ export default {
 .commentss-item {
   line-height: 50px;
   position: relative;
-  border-bottom: 1px solid rgba(102, 102, 102, 0.562);
+ 
   margin: 10px 0;
 }
 .commentss-item span {
@@ -175,16 +245,24 @@ export default {
   height: 50px;
 }
 .commentss-item .comment-user {
+  font-family: "PingFang SC";
+  font-size: 14px;
+  color: #909399;
   position: absolute;
   left: 80px;
   top: 0;
 }
 .commentss-item .comment-time {
+  font-family: "PingFang SC";
+  font-size: 14px;
+  color: #909399;
   position: absolute;
   right: 0;
   top: 0;
 }
 .comments-content {
+  color: #606266;
+  font-family: "PingFang SC";
   padding-left: 80px;
 }
 </style>

@@ -12,7 +12,7 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="Login('form')">登录</el-button>
-          <el-button @click="test">取消</el-button>
+          <el-button @click="goBack">取消</el-button>
         </el-form-item>
         <el-form-item>
           <el-link @click="openEnrol">还没有账号？立即注册<i class="el-icon-view el-icon--right"></i> </el-link>
@@ -122,7 +122,7 @@ export default {
                   message: '登录成功',
                   type: 'success'
                 });
-                
+                this.$store.commit('upDataUser',res.data.data)
                 //跳转到对应的界面
                 if(res.data.data.level == 1){
                   this.$router.push('/admin/index')
@@ -141,6 +141,9 @@ export default {
       },
       test(){
         //console.log(this.name);
+      },
+      goBack(){
+        this.$router.go(-1)
       },
       openEnrol(){
         this.dialogVisible = true
