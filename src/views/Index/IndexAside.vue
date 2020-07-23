@@ -18,11 +18,13 @@
           <el-link :underline="false" v-for="(item,index) in hotArticleData" :key="index" class="ellink" @click="goDetail(item.id)"><i class="">{{index + 1}}</i> {{item.blogTitle}}</el-link>
         </div>
       </el-card>
+      <music-play/>
     </div>
 
 </template>
 
 <script>
+import MusicPlay from '@/components/common/MusicPlay'
 import BiaoQianYun from '@/components/common/BiaoQianYun'
 export default {
     name:  '',
@@ -34,7 +36,8 @@ export default {
       }
     },
     components: {
-      BiaoQianYun
+      BiaoQianYun,
+      MusicPlay
     },
     data () {
         return {

@@ -13,7 +13,7 @@
             <el-menu-item index="2" @click="goCategory"> <i class="el-icon-menu"></i>分类</el-menu-item>
             <el-menu-item index="3" @click="goAbout" ><i class="el-icon-info" ></i>关于 </el-menu-item>
             <el-menu-item index="4" @click="goLogin" v-if="isShowLogin"><i class="el-icon-s-custom"></i>登录</el-menu-item>
-            <el-menu-item index="5" v-else><i class="el-icon-s-custom"></i>个人</el-menu-item>
+            <el-menu-item index="4" v-else @click="goUser"><i class="el-icon-s-custom"></i>个人</el-menu-item>
           </el-menu>
         </el-header>
     
@@ -30,7 +30,6 @@ export default {
     data () {
         return {
         activeIndex: '1',
-        activeIndex2: '1',
         isShowLogin: true,
         userData:{}
         }
@@ -74,6 +73,9 @@ export default {
       },
       goLogin(){
         this.$router.push('/login')
+      },
+      goUser(){
+        this.$router.push('/user')
       }
     }
 }

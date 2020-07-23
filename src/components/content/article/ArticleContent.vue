@@ -1,6 +1,6 @@
 <template>
       <div class="content">
-        <div class="top">
+        <div class="top" v-if="isShowTop">
           <el-card class="box-card">
             <div slot="header" class="clearfix header">
               <span><i class="el-icon-upload2"></i> 置 顶</span>
@@ -43,7 +43,8 @@ export default {
     },
     data () {
         return {
-          count: 0
+          count: 0,
+          isShowTop:false
         }
     },
     watch: {
@@ -53,7 +54,9 @@ export default {
 
     },
     created () {
-
+      if(this.topArticleData.length){
+        this.isShowTop = true
+      }
     },
     mounted () {
       /* hideLoading() */
