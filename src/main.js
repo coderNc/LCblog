@@ -7,8 +7,8 @@ import 'normalize.css'
 import './assets/icon/iconfont.css'
 import $ from 'jquery'
 
-//import  'ribbon.js'
-
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts 
 
 
 //引入axios模块

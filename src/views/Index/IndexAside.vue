@@ -15,7 +15,7 @@
           <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
         </div>
         <div class="text item">
-          <el-link :underline="false" v-for="(item,index) in hotArticleData" :key="index" class="ellink" @click="goDetail(item.id)"><i class="">{{index + 1}}</i> {{item.blogTitle}}</el-link>
+          <el-link :underline="false" v-for="(item,index) in hotArticleData.slice(0,10)" :key="index" class="ellink" @click="goDetail(item.id)"><i class="">{{index + 1}}</i> {{item.blogTitle}}</el-link>
         </div>
       </el-card>
       <music-play/>

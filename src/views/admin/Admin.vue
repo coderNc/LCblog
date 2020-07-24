@@ -28,13 +28,13 @@
         <div class="flec">
             <el-menu default-active="1-4-1" :default-openeds="['4','2', '3']" class="el-menu-vertical-demo menuWrapper"  :collapse="isCollapse">
 
-            <el-menu-item index="1">
-                <i class="el-icon-setting"></i>
+            <el-menu-item index="1" @click="goAdmin">
+                <i class="el-icon-s-home"></i>
                 <span slot="title">首页</span>
             </el-menu-item>
             <el-submenu index="2">
                 <template slot="title">
-                <i class="el-icon-location"></i>
+                <i class="el-icon-user"></i>
                 <span slot="title">用户管理</span>
                 </template>
                 <el-menu-item-group>
@@ -43,17 +43,17 @@
             </el-submenu>
             <el-submenu index="3">
                 <template slot="title">
-                <i class="el-icon-location"></i>
+                <i class="el-icon-notebook-2"></i>
                 <span slot="title">博客管理</span>
                 </template>
                 <el-menu-item-group>
                 <el-menu-item index="3-1" @click="goArticle">博客列表</el-menu-item>
-                <el-menu-item index="3-2" @click="goAddArticle">写博客</el-menu-item>
+                <el-menu-item index="3-2" @click="goAddArticle"><i class="el-icon-edit-outline"></i> 写博客</el-menu-item>
                 </el-menu-item-group>
             </el-submenu>
             <el-submenu index="4">
                 <template slot="title">
-                <i class="el-icon-location"></i>
+                <i class="el-icon-menu"></i>
                 <span slot="title">分类管理</span>
                 </template>
                 <el-menu-item-group>
@@ -62,7 +62,7 @@
             </el-submenu>
             <el-submenu index="5">
                 <template slot="title">
-                <i class="el-icon-location"></i>
+                <i class="el-icon-s-comment"></i>
                 <span slot="title">评论管理</span>
                 </template>
                 <el-menu-item-group>
@@ -87,21 +87,21 @@
         title="修改密码"
         :visible.sync="dialogVisible"
         width="30%">
-<el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-    <el-form-item label="旧密码" prop="oldPass">
-    <el-input type="password" v-model="ruleForm.oldPass" autocomplete="off" placeholder="请输入旧密码"></el-input>
-  </el-form-item>
-  <el-form-item label="新密码" prop="pass">
-    <el-input type="password" v-model="ruleForm.pass" autocomplete="off" placeholder="请输入新密码"></el-input>
-  </el-form-item>
-  <el-form-item label="确认密码" prop="checkPass">
-    <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off" placeholder="请再次输入新密码"></el-input>
-  </el-form-item>
-  <el-form-item>
-    <el-button type="primary" @click="submitForm">提交</el-button>
-    <el-button @click="resetForm('ruleForm')">重置</el-button>
-  </el-form-item>
-</el-form>
+          <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+              <el-form-item label="旧密码" prop="oldPass">
+              <el-input type="password" v-model="ruleForm.oldPass" autocomplete="off" placeholder="请输入旧密码"></el-input>
+            </el-form-item>
+            <el-form-item label="新密码" prop="pass">
+              <el-input type="password" v-model="ruleForm.pass" autocomplete="off" placeholder="请输入新密码"></el-input>
+            </el-form-item>
+            <el-form-item label="确认密码" prop="checkPass">
+              <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off" placeholder="请再次输入新密码"></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="submitForm">提交</el-button>
+              <el-button @click="resetForm('ruleForm')">重置</el-button>
+            </el-form-item>
+          </el-form>
         </el-dialog>
 
   </div>
@@ -155,6 +155,7 @@ export default {
   watch: {},
   computed: {},
   created() {
+    
     this.axios.defaults.baseURL = "http://www.lcblog.xyz:81";
     this.axios.defaults.withCredentials = true;
     //请求登录页用户数据
@@ -191,6 +192,9 @@ export default {
     },
     toggleAside(){
         this.isCollapse = !this.isCollapse
+    },
+    goAdmin(){
+      this.$router.push('/admin')
     },
     //退出登录
     logout(){

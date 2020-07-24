@@ -7,7 +7,7 @@
           </div>
           <div class="main">
             <p class="info">{{articlesItem.blogAuthor}} 发表于 {{articlesItem.createTime}}</p>
-            <div class="brief" v-html="articlesItem.blogContent.trim().substr(0,180)+'...'"></div>
+            <div class="brief" v-html="articlesItem.blogContent.trim().substr(0,240)+'...'"></div>
             <p class="extra">
               <span class="reading">阅读({{articlesItem.readNum}})</span>
               <span class="comment">评论({{articlesItem.commentNum}})</span>
@@ -141,17 +141,17 @@ export default {
   /* line-height: 22px; */
   
   margin-bottom: 10px;
-  font-size: 14px;
+  font-size: 16px;
   color: #777;
   width: 780px;
   height: 130px;
   /* background-color: #bfa; */
   /* overflow: hidden; */
 }
-.content .brief p,.content .brief h2{
-  font-size: 14px;
+.content .brief p,.content .brief h2 , .content .brief h1{
+  /* font-size: 16px; */
   margin: 5px;
-  /* display: inline-block; */
+  display: inline-block;
 }
 .content .brief pre{
   margin: 3px;
@@ -165,7 +165,7 @@ export default {
   text-decoration: none;
 }
 .content .extra {
-  font-size: 12px;
+  font-size: 14px;
   color: #999;
 }
 .content .extra .fa {

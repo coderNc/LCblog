@@ -11,8 +11,9 @@
           <el-input type="password" v-model="form.password"  placeholder="请输入密码"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="Login('form')">登录</el-button>
           <el-button @click="goBack">取消</el-button>
+          <el-button type="primary" @click="Login('form')">登录</el-button>
+          
         </el-form-item>
         <el-form-item>
           <el-link @click="openEnrol">还没有账号？立即注册<i class="el-icon-view el-icon--right"></i> </el-link>

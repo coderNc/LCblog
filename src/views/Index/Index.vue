@@ -63,7 +63,8 @@ export default {
 
     },
     created () {
-          const h = this.$createElement;
+      console.log(this.$route.path);
+        const h = this.$createElement;
         this.$notify({
           title: 'Hello',
           message: h('i', { style: 'color: teal'}, '此博客的前端已经重构为Vue + ElementUI')

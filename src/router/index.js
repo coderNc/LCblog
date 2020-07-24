@@ -25,10 +25,11 @@ const AdminAddArticle = () => import('@/views/admin/AdminAddArticle.vue')
 
 
 export default new Router({
+  /* mode:'history', */
   routes: [
     {
       path: '',
-      redirect: '/admin'
+      redirect: '/index'
     },
     {
       path:'/index',
@@ -77,6 +78,7 @@ export default new Router({
     {
       path:'/admin',
       component:Admin,
+      redirect:'/admin/index',
       children:[
         {
           path:'index',
