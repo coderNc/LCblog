@@ -1,0 +1,202 @@
+
+
+
+.header{
+  height: 60px;
+  background-color: #fff;
+  border-bottom: 1px solid #e6e6e6;
+  /* opacity: .5; */
+  
+  
+}
+
+.header .nav-bar{
+  width: 1240px;
+  /* background-color: #000; */
+  margin: 0 auto;
+  height: 100%;
+  
+
+}
+.nav-bar .fl{
+  display: none;
+}
+.nav-bar .logo{
+  float: left;
+  /* opacity: .8; */
+}
+
+.nav-bar .logo img {
+  width: 100px;
+
+}
+
+.nav-bar .clickList{
+  float: right;
+  /* margin: 10px; */
+  height: 100%;
+}
+.clickList ul{
+  width: 480px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+.clickList ul #userInfo{
+  display: none;
+}
+.clickList ul li{
+  /* float: left; */
+  height: 100%;
+  list-style: none;
+  margin: 0 10px;
+  padding:0 5px;
+  transition: all .5s;
+  
+}
+.clickList ul li:hover{
+  background-color: rgba(68, 152, 247, 0.199);
+
+}
+.clickList ul li:hover i{
+  color:rgba(29, 131, 247, 0.767);
+}
+.clickList li a{
+  text-decoration: none;
+  font-size: 22px;
+  text-align: center;
+  line-height: 60px;
+  color: #303133;
+}
+
+
+/*解决高度塌陷*/
+.clearfix::before,
+.clearfix::after{
+    content:"" ;
+    display: table;
+    clear: both;
+}
+
+
+
+
+/* 脚部 */
+.footer{
+  width: 100%;
+  height: 100px;
+  background-color: #fff;
+  border-top: 1px solid  rgba(102, 102, 102, 0.562);
+}
+
+.footer .appInfo{
+  margin: 10px 0;
+  text-align: center;
+  padding-top: 10px;
+}
+.footer .other{
+  text-align: center;
+}
+
+
+
+
+/* 回到顶部 */
+.backTop{
+  display: none;
+  position: fixed;
+  bottom: 150px;
+  right:  150px;
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid #000;
+  border-radius: 50%;
+  transition: all .3s;
+}
+.backTop a{
+  text-decoration: none;
+  color: #000;
+  display: block;
+  text-align: center;
+  line-height: 40px;
+  
+}
+.backTop a i{
+  font-size: 25px; 
+  transition: all .3s;
+}
+.backTop:hover i{
+  color:rgba(29, 131, 247, 0.767);
+
+}
+.backTop:hover{
+  border: 1px solid rgba(29, 131, 247, 0.767);
+}
+.show{
+  display: block;
+}
+
+
+
+
+@media screen and (max-width: 768px){
+
+
+  /* 断点768px */
+
+
+
+
+
+
+
+
+
+
+
+    /* 回到顶部 */
+  .backTop{
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right:  30px;
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid #000;
+    border-radius: 50%;
+    transition: all .3s;
+  }
+  .backTop a{
+    text-decoration: none;
+    color: #000;
+    display: block;
+    text-align: center;
+    line-height: 40px;
+    
+  }
+  .backTop a i{
+    font-size: 25px; 
+    transition: all .3s;
+  }
+  .backTop:hover i{
+    color:rgba(29, 131, 247, 0.767);
+
+  }
+  .backTop:hover{
+    border: 1px solid rgba(29, 131, 247, 0.767);
+  }
+
+
+
+
+
+
+  }
+
+
+
+

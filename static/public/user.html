@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人资料</title>
+  <link rel="stylesheet" href="./assets/css/base.css">
+  <link rel="stylesheet" href="./assets/css/user.css">
+  <link rel="stylesheet" href="./assets/css/normalize.css">
+  <link rel="stylesheet" href="./assets/fonts/iconfont.css">
+  <link rel="stylesheet" href="./assets/vendors/bootstrap/css/bootstrap.css">
+</head>
+<body>
+  <div class="header ">
+    <div class="nav-bar">
+      <div class="fl">
+        <i class="iconfont icon-liebiao"></i>
+      </div>
+      <div class="logo">
+        <a href="#"><img src="./assets/img/LCBLOG.png" alt="LcBlog"></a>
+      </div>
+      <div class="clickList">
+        <ul>
+          <li>
+            <a href="index.html">
+              <i class="iconfont icon-shouye"></i>
+              首页
+            </a>
+          </li>
+          <li>
+            <a href="category.html">
+              <i class="iconfont icon-caidan"></i>
+              分类
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="iconfont icon-lianjie"></i>
+              关于
+            </a>
+          </li>
+          <li id="userLogin">
+            <a href="javasctipt:;" id="login">
+              <i class="iconfont icon-yonghu_zhanghao_wode"></i>
+              登录
+            </a>
+          </li>
+          <li id="userInfo">
+            <a href="user.html">
+              <i class="iconfont icon-yonghu_zhanghao_wode"></i>
+              个人资料
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  
+  </div>
+  <div class="userwrapper">
+    <div class="avatrr">
+      <div class="col-md-4" id="modifyBox">
+        <form id="userForm" enctype="multipart/form-data">
+          <h2>编辑头像</h2>
+            <div class="form-group">
+              <label class="form-image">
+                <input id="avatar" type="file">
+                <img src="http://blog-picture-lc.oss-cn-beijing.aliyuncs.com/blog_picture/1594017712310.jpg" id="preview">
+                <i class="mask fa fa-upload"></i>
+              </label>
+              <input type="hidden" id="hiddenAvatar">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="goback">
+    <a href="./admin/index.html">管理页面</a>
+  </div>
+  <div class="logoutwrapper">
+    <a href="javascript:;" id="logout">退出登录</a>
+  </div>
+  <div class="backTop">
+    <a href="javascript:;"><i class="iconfont icon-zhiding"></i></a>
+  </div>
+
+
+  <script src="./assets/vendors/jquery/jquery.min.js" type="text/javascript"></script>
+  <script src="./assets/js1/index/common.js"></script>
+  <script src="./assets/js1/index/user.js"></script>
+  <script src="./assets/vendors/bootstrap/js/bootstrap.js"></script>
+  <script src="./assets/vendors/art-template/template-web.js"></script>
+  <script async type="text/javascript" size="90" alpha="0.2" zIndex="0" src="./assets/js1/index/ribbon.js"></script>
+  <script color="0,0,0" opacity="0.5" count="99" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

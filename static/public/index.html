@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LcBlog</title>
+  <link rel="stylesheet" href="./assets/css/base.css">
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="./assets/css/normalize.css">
+  <!-- <link rel="stylesheet" href="./assets/css/bannerstyle.css"> -->
+  <link rel="stylesheet" href="./assets/fonts/iconfont.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/vendors/hightcode/styles/default.css">
+  <script src="./assets/vendors/hightcode/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body class="clearfix">
+  
+  <div class="header ">
+    <div class="nav-bar">
+      <div class="fl">
+        <i class="iconfont icon-liebiao"></i>
+      </div>
+      <div class="logo">
+        <a href="#"><img src="./assets/img/LCBLOG.png" alt="LcBlog"></a>
+      </div>
+      <div class="clickList">
+        <ul>
+          <li>
+            <a href="index.html">
+              <i class="iconfont icon-shouye"></i>
+              首页
+            </a>
+          </li>
+          <li>
+            <a href="category.html">
+              <i class="iconfont icon-caidan"></i>
+              分类
+            </a>
+          </li>
+          <li>
+            <a href="auout.html">
+              <i class="iconfont icon-lianjie"></i>
+              关于
+            </a>
+          </li>
+          <li id="userLogin">
+            <a href="javasctipt:;" id="login">
+              <i class="iconfont icon-yonghu_zhanghao_wode"></i>
+              登录
+            </a>
+          </li>
+          <li id="userInfo">
+            <a href="user.html">
+              <i class="iconfont icon-yonghu_zhanghao_wode"></i>
+              个人资料
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  
+  </div>
+  <div class="container clearfix">
+    <div class="aside">
+      <div class="zzsc-container">
+        <div class="bqy"><h3><i class="iconfont icon-tubiao-"></i>标签云</h3></div>
+        <div id='tag-cloud'></div>
+      </div>
+      <div class="hot">
+        <div class="hot-title">
+          <h3><i class="iconfont icon-hot"></i>最热文章</h3>
+        </div>
+        <div class="hot-content">
+  
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <h3 class="topTitle">置顶</h3>
+      <div class="top">
+
+      </div>
+      <h3 class="newput">最新发布</h3>
+      <div class="panel new">
+        
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="backTop">
+    <a href="javascript:;"><i class="iconfont icon-zhiding"></i></a>
+  </div>
+
+
+  <!-- <script src="./assets/js1/index/bannerIndex.js"></script> -->
+  <script src="./assets/vendors/jquery/jquery.min.js" type="text/javascript"></script>
+  <script src="./assets/js1/index/jquery.svg3dtagcloud.min.js"></script>
+  <script async type="text/javascript" size="90" alpha="0.2" zIndex="0" src="./assets/js1/index/ribbon.js"></script>
+  <script color="0,0,0" opacity="0.5" count="99" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./assets/js1/index/clock.js"></script>
+  <script src="./assets/js1/index.js"></script>
+  <script src="./assets/js1/index/common.js"></script>
+  <script src="./assets/js1/index/biaoqianyun.js"></script>
+  <script src="./assets/vendors/art-template/template-web.js"></script>
+
+
+  <!-- 文章内容 -->
+  <script type="text/html" id="contentTpl">
+    {{each data}}
+    <div class="entry">
+      <div class="head">
+        <span class="sort">{{$value.blogCategory}}</span>
+        <a href="detail.html?id={{$value.id}}">{{$value.blogTitle}}</a>
+      </div>
+      <div class="main">
+        <p class="info">{{$value.blogAuthor}} 发表于 {{$value.createTime}}</p>
+        <div class="brief">{{@$value.blogContent}}</div>
+        <a href="detail.html?id={{$value.id}}" id='dian'>……</a>
+        <p class="extra">
+          <span class="reading">阅读({{$value.readNum}})</span>
+          <span class="comment">评论({{$value.commentNum}})</span>
+          <a href="javascript:;" class="like">
+            <i class="iconfont icon-dianzan"></i>
+            <span>赞({{$value.likeNum}})</span>
+          </a>
+          <a href="category.html" class="tags">
+            分类：<span>{{$value.blogCategory}}</span>
+          </a>
+        </p>
+      </div>
+    </div>
+  {{/each}}
+  
+  </script>
+
+  
+  <!-- 置顶文章 -->
+  <script type="text/html" id="topTpl">
+    {{each data}}
+    <div class="entry">
+      <div class="head">
+        <span class="sort">{{$value.blogCategory}}</span>
+        <a href="detail.html?id={{$value.id}}">{{$value.blogTitle}}</a>
+      </div>
+      <div class="main">
+        <p class="info">{{$value.blogAuthor}} 发表于 {{$value.createTime}}</p>
+        <div class="brief">{{@$value.blogContent}}</div>
+        <a href="detail.html?id={{$value.id}}" id='dian'>......</a>
+        <p class="extra">
+          <span class="reading">阅读({{$value.readNum}})</span>
+          <span class="comment">评论({{$value.commentNum}})</span>
+          <a href="javascript:;" class="like">
+            <i class="iconfont icon-dianzan"></i>
+            <span>赞({{$value.likeNum}})</span>
+          </a>
+          <a href="category.html" class="tags">
+            分类：<span>{{$value.blogCategory}}</span>
+          </a>
+        </p>
+      </div>
+    </div>
+  {{/each}}
+  </script>
+
+  <!-- 热门文章 -->
+  <script type="text/html" id="hotTpl">
+    
+    <a href="detail.html?id={{data[0].id}}">
+      <p><i class="iconfont icon-1_round_solid"></i>  {{data[0].blogTitle}}</p>
+    </a>
+    <a href="detail.html?id={{data[0].id}}">
+      <p><i class="iconfont icon-2_round_solid"></i>  {{data[0].blogTitle}}</p>
+    </a>
+    <a href="detail.html?id={{data[1].id}}">
+      <p><i class="iconfont icon-3_round_solid"></i>  {{data[1].blogTitle}}</p>
+    </a>
+    <a href="detail.html?id={{data[2].id}}">
+      <p><i class="iconfont icon-4_round_solid"></i>  {{data[2].blogTitle}}</p>
+    </a>
+    <a href="detail.html?id={{data[3].id}}">
+      <p><i class="iconfont icon-5_round_solid"></i>  {{data[3].blogTitle}}</p>
+    </a>
+    <a href="detail.html?id={{data[4].id}}">
+      <p><i class="iconfont icon-6_round_solid"></i>  {{data[4].blogTitle}}</p>
+    </a>
+    <a href="detail.html?id={{data[5].id}}">
+      <p><i class="iconfont icon-7_round_solid"></i>  {{data[5].blogTitle}}</p>
+    </a>
+    <a href="detail.html?id={{data[6].id}}">
+      <p><i class="iconfont icon-8_round_solid"></i>  {{data[6].blogTitle}}</p>
+    </a>
+    <a href="detail.html?id={{data[7].id}}">
+      <p><i class="iconfont icon-9_round_solid"></i>  {{data[7].blogTitle}}</p>
+    </a>
+  
+  </script>
+
+  <!-- 标签云 -->
+<script>
+	
+</script>
+
+</body>
+</html>

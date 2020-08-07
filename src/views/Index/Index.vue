@@ -69,7 +69,13 @@ export default {
           title: 'Hello',
           message: h('i', { style: 'color: teal'}, '此博客的前端已经重构为Vue + ElementUI')
         });
-        
+          this.$notify({
+          title: '提示',
+          message: '旧版博客链接：<a href="static/public/index.html">旧版博客</a>',
+          dangerouslyUseHTMLString: true,
+          duration: 0 ,
+          position: 'top-left'
+        });
       this.axios.defaults.baseURL = 'http://www.lcblog.xyz:81'
       this.axios.defaults.withCredentials = true
       showLoading()

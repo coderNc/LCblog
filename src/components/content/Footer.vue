@@ -49,5 +49,6 @@ export default {
 <style scoped>
 .footer{
   text-align: center;
+  height: 150px;
 }
 </style>

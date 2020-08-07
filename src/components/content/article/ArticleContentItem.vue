@@ -7,7 +7,7 @@
           </div>
           <div class="main">
             <p class="info">{{articlesItem.blogAuthor}} 发表于 {{articlesItem.createTime}}</p>
-            <div class="brief" v-html="articlesItem.blogContent.trim().substr(0,240)+'...'"></div>
+            <div class="brief" v-html="articlesItem.blogContent"></div>
             <p class="extra">
               <span class="reading">阅读({{articlesItem.readNum}})</span>
               <span class="comment">评论({{articlesItem.commentNum}})</span>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+//.trim().substr(0,240)+'...'
 export default {
     name:  '',
     mixins: [],
@@ -147,6 +148,14 @@ export default {
   height: 130px;
   /* background-color: #bfa; */
   /* overflow: hidden; */
+
+
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 .content .brief p,.content .brief h2 , .content .brief h1{
   /* font-size: 16px; */

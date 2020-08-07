@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>分类</title>
+  <link rel="stylesheet" href="./assets/css/base.css">
+  <link rel="stylesheet" href="./assets/css/normalize.css">
+  <link rel="stylesheet" href="./assets/css/category.css">
+  <link rel="stylesheet" href="./assets/fonts/iconfont.css">
+</head>
+<div class="header ">
+  <div class="nav-bar">
+    <div class="fl">
+      <i class="iconfont icon-liebiao"></i>
+    </div>
+    <div class="logo">
+      <a href="#"><img src="./assets/img/LCBLOG.png" alt="LcBlog"></a>
+    </div>
+    <div class="clickList">
+      <ul>
+        <li>
+          <a href="index.html">
+            <i class="iconfont icon-shouye"></i>
+            首页
+          </a>
+        </li>
+        <li>
+          <a href="category.html">
+            <i class="iconfont icon-caidan"></i>
+            分类
+          </a>
+        </li>
+        <li>
+          <a href="auout.html">
+            <i class="iconfont icon-lianjie"></i>
+            关于
+          </a>
+        </li>
+        <li id="userLogin">
+          <a href="javasctipt:;" id="login">
+            <i class="iconfont icon-yonghu_zhanghao_wode"></i>
+            登录
+          </a>
+        </li>
+        <li id="userInfo">
+          <a href="user.html">
+            <i class="iconfont icon-yonghu_zhanghao_wode"></i>
+            个人资料
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+</div>
+  <div class="contentWrapper clearfix">
+    <div class="list">
+      <a href="category.html">
+        <p><i></i>全部</p>
+      </a>
+      <div class="list-item">
+
+      </div>
+
+    </div>
+    <div class="content">
+      <div class="panel new">
+
+      </div>
+<!--       <div class="footer">
+        <div class="appInfo">
+          <span>Copyright © 2020 by LcBlog </span>
+          <span>|</span>
+          <span>备案号:123456</span>
+        </div>
+        <div class="other">
+          <p> <i class="iconfont icon-shoucang"></i> 以梦为马 不负韶华</p>
+        </div>
+      </div> -->
+    </div>
+
+  </div>
+
+
+
+
+  <div class="backTop">
+    <a href="javascript:;"><i class="iconfont icon-zhiding"></i></a>
+  </div>
+
+
+  <script async type="text/javascript" size="90" alpha="0.2" zIndex="0" src="./assets/js1/index/ribbon.js"></script>
+  <script color="0,0,0" opacity="0.5" count="99" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./assets/vendors/art-template/template-web.js"></script>
+  <script src="./assets/vendors/jquery/jquery.min.js"></script>
+  <script src="./assets/js1/index/category.js"></script>
+  <script src="./assets/js1/index/common.js"></script>
+  <script type="text/html" id="contentTpl">
+    {{each data}}
+    <div class="entry">
+      <div class="head">
+        <span class="sort">{{$value.blogCategory}}</span>
+        <a href="detail.html?id={{$value.id}}">{{$value.blogTitle}}</a>
+      </div>
+      <div class="main">
+        <p class="info">{{$value.blogAuthor}} 发表于 {{$value.createTime}}</p>
+        <div class="brief">{{@$value.blogContent}}</div>
+        <a href="detail.html?id={{$value.id}}" id='dian'>......</a>
+        <p class="extra">
+          <span class="reading">阅读({{$value.readNum}})</span>
+          <span class="comment">评论({{$value.commentNum}})</span>
+          <a href="javascript:;" class="like">
+            <i class="iconfont icon-dianzan"></i>
+            <span>赞({{$value.likeNum}})</span>
+          </a>
+          <a href="category.html" class="tags">
+            分类：<span>{{$value.blogCategory}}</span>
+          </a>
+        </p>
+      </div>
+    </div>
+  {{/each}}
+  
+  </script>
+  <script type="text/html" id="listTpl">
+    {{each data}}
+    <a href="category.html?id={{$value.id}}">
+      <p><i></i>{{$value.categoryName}}</p>
+    </a>
+    {{/each}}
+  </script>
+
+
+
+</body>
+</html>
